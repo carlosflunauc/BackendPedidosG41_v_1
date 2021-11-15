@@ -10,10 +10,11 @@ export class AutenticacionService {
    * Add service methods here
    */
 GenerarClave(){
-  let  clave = generador(8, false);
+  let clave = generador(8, false); // 8 longitud, false intensidad de memorizar
   return clave;
 }
-CifrarClave(clave:string){
+
+CifrarClave(clave: string){
   let claveCifrada = cryptoJS.MD5(clave).toString();
   return claveCifrada;
 }

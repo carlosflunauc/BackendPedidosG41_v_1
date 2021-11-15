@@ -1,4 +1,4 @@
-import { service } from '@loopback/core';
+import { asService, service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -18,19 +18,18 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
+import { serviceProxy } from '@loopback/service-proxy';
 import {Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
-import { AutenticacionService } from '../services';
-//import fetch from 'node-fetch';
-const fetch1 = require('node-fetch');
+import {AutenticacionService} from '../services';
+const fetch = require('node-fetch');
 
 export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
     public usuarioRepository : UsuarioRepository,
     @service(AutenticacionService)
-    public servicioAutenticacion : AutenticacionService
-
+    public servicioAutenticacion: AutenticacionService
   ) {}
 
   @post('/usuarios')
@@ -61,9 +60,9 @@ export class UsuarioController {
     // notificacion al usuario por medio del email
     let destino = usuario.correo;
     let asunto ='Registro en la Plataforma de prueba';
-    let contenido =`Buenas este es un mensaje para ${usuario.nombres}, y su usuario es: ${usuario.correo}`;
+    let contenido =`Hola, es un mensaje para ${usuario.nombres}, su usuario es: ${usuario.correo} y su contraseña es: ${clave}`;
     
-    fetch1(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+    fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
     .then((data: any) => {
       console.log(data);
     })
