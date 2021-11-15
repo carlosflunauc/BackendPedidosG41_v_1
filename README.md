@@ -1,5 +1,5 @@
 # Sentencias Claves loopback4
-
+actualizacion 15 de noviembre 2021
   Para inciar un proyecto se necesita la guia inicial:
   https://loopback.io/getting-started.html
 
