@@ -16,6 +16,14 @@ actualizacion 15 de noviembre 2021
   Ejecutar
   npm start
 
+  Función await: esperar una respuesta.
+
+  npm i crypto-js
+  npm i password-generator
+
+  npm i node-fetch@2.6
+
+
 # pedidios
 
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
