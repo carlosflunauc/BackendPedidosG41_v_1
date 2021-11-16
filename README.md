@@ -1,5 +1,5 @@
 # Sentencias Claves loopback4
-actualizacion 15 de noviembre 2021
+actualizacion 16 de noviembre 2021
   Para inciar un proyecto se necesita la guia inicial:
   https://loopback.io/getting-started.html
 
@@ -15,6 +15,15 @@ actualizacion 15 de noviembre 2021
 
   Ejecutar
   npm start
+  
+  Función await: esperar una respuesta.
+
+  npm i crypto-js
+  npm i password-generator
+
+  npm i node-fetch@2.6
+
+  npm i jsonwebtoken
 
 # pedidios
 
