@@ -44,7 +44,10 @@ export class UsuarioController {
     })
     usuario: Omit<Usuario, 'id'>,
   ): Promise<Usuario> {
-    return this.usuarioRepository.create(usuario);
+
+
+    
+   let p = await this.usuarioRepository.create(usuario);
   }
 
   @get('/usuarios/count')
