@@ -21,6 +21,7 @@ import {
 import {Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
 import { AutenticacionService } from '../services';
+const fetch = require('node-fetch');
 
 export class UsuarioController {
   constructor(
@@ -55,8 +56,16 @@ export class UsuarioController {
     let p = await this.usuarioRepository.create(usuario);
 
     // notificacion al usuario por correo electronico
-    fetch(`http://127.0.0.1:5000/`)
-  }
+    let destino = usuario.correo;
+    let asunto ='Registro en la plataforma de prueba';
+    let contenido = `hola, es un mensaje para ${usuario.nombres}, su usuario es: ${usuario.correo} y su contraseña es ${clave}`;
+    
+    fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+    .then((data: any)=>{
+    console.log(data);
+  })
+  return p;
+}
 
   @get('/usuarios/count')
   @response(200, {
