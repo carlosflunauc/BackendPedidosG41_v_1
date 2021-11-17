@@ -1,4 +1,4 @@
-import { AuthenticationComponent } from '@loopback/authentication';
+import { AuthenticationComponent, registerAuthenticationStrategy } from '@loopback/authentication';
 import { EstrategiaAdministrador } from './strategies/admin.strategy';
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
@@ -44,7 +44,10 @@ export class App extends BootMixin(
     };
     registerAuthenticationStrategy(this, EstrategiaAdministrador);
     this.component(AuthenticationComponent);
+
+    /*
+    registerAuthenticationStrategy(this, EstrategiaAdministrador);
+    this.component(AuthenticationComponent);
+    */
   }
 }
-
-
