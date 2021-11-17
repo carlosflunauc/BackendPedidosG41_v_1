@@ -18,6 +18,7 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
+import { Llaves } from '../config/llaves';
 import {Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
 import { AutenticacionService } from '../services';
@@ -60,7 +61,7 @@ export class UsuarioController {
     let asunto ='Registro en la plataforma de prueba';
     let contenido = `hola, es un mensaje para ${usuario.nombres}, su usuario es: ${usuario.correo} y su contraseña es ${clave}`;
     
-    fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+    fetch(`${Llaves.usrServicioNotificaciones}/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
     .then((data: any)=>{
     console.log(data);
   })
