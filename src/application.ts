@@ -1,3 +1,4 @@
+import { AuthenticationComponent } from '@loopback/authentication';
 import { EstrategiaAdministrador } from './strategies/admin.strategy';
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
@@ -10,10 +11,6 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
-import {authentication, AuthenticationComponent} from '@loopback/authentication';
-import {AuthenticationComponent} from '@loopback/authentication';
-
-//import {ÁuthenticationComponent} from ''
 
 export {ApplicationConfig};
 
@@ -46,15 +43,8 @@ export class App extends BootMixin(
       },
     };
 
-registerAuthenticationStrategy(this, EstrategiaAdministrador);
-this.component(AuthenticationComponent);
+    registerAuthenticationStrategy(this, EstrategiaAdministrador);
+    this.component(AuthenticationComponent);
   }
-}
-function AuthenticationComponent(AuthenticationComponent: any) {
-  throw new Error('Function not implemented.');
-}
-
-function registerAuthenticationStrategy(arg0: this, EstrategiaAdministrador: typeof EstrategiaAdministrador) {
-  throw new Error('Function not implemented.');
 }
 
