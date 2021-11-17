@@ -32,16 +32,18 @@ export class AutenticacionService {
   IdentificarPersona(usuario: string, clave: string){
     try{
      let p =this.usuarioRepository.findOne({where: {correo: usuario, clave: clave}});
+     
      if(p){
        return p;
-     } return false;
+     } 
+     return false;
     }catch{
     return false;
     }
   }
 
   GenerarTokenJWT(usuario: Usuario){
-    let token = jwt.sing({
+    let token = jwt.sign({
       data:{
         id: usuario.id,
         correo: usuario.correo,
@@ -57,7 +59,6 @@ export class AutenticacionService {
       return datos;
     }catch{
       return false;
-
     }
   }
 }
