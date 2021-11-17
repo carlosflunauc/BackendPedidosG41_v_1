@@ -44,10 +44,5 @@ export class App extends BootMixin(
     };
     registerAuthenticationStrategy(this, EstrategiaAdministrador);
     this.component(AuthenticationComponent);
-
-    /*
-    registerAuthenticationStrategy(this, EstrategiaAdministrador);
-    this.component(AuthenticationComponent);
-    */
   }
 }
