@@ -16,6 +16,12 @@ actualizacion 15 de noviembre 2021
   Ejecutar
   npm start
 
+  SEMANA 4
+
+  Función await: esperar una respuesta.
+
+  npm i crypto-js
+  npm i password-generator
 
 # pedidios
 
