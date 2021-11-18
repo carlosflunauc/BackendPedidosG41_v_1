@@ -1,4 +1,4 @@
-import { AutenticacionService } from './../services/autenticacion.service';
+import { AutenticacionService } from './../services';
 import { service } from '@loopback/core';
 import {
   Count,
@@ -21,7 +21,7 @@ import {
 } from '@loopback/rest';
 import {Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
-const fecht = require("node-fetch");
+const fetch = require("node-fetch");
 
 export class UsuarioController {
   constructor(
@@ -52,7 +52,6 @@ export class UsuarioController {
 
     let clave = this.servicioAutenticacion.GenerarClave();
     let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
-
     usuario.clave = claveCifrada;
 
     let p = await this.usuarioRepository.create(usuario);
@@ -61,8 +60,8 @@ export class UsuarioController {
     let destino = usuario.correo;
     let asunto = 'Registro en la plataforma de Prueba';
     let contenido =`Hola ${usuario.nombres}, su nombre de usuario es: ${usuario.correo} y su contraseña es: ${clave}`;
-    fetch(`http://127.0.0.1:5000/envio-correo?correo_destiono=${destino}&asunto=${asunto}&contenido=${contenido}`)
-    .then((data: any) => {
+    fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+    .then((data: any)=>{
       console.log(data);
     })
     return p;
