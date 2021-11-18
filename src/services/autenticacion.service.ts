@@ -40,7 +40,7 @@ export class AutenticacionService {
       return false;
     }
   }
-  
+
   GenerarTokenJWT(usuario: Usuario){
       let token = jwt.sign({
         id: usuario.id,
@@ -49,5 +49,13 @@ export class AutenticacionService {
       },
       Llaves.claveJWT);
       return token;
+  }
+  ValidarTokenJWT(token: string){
+    try{
+      let datos = jwt.verify(token, Llaves.claveJWT);
+      return datos;
+    }catch{
+      return false;
+    }
   }
 }
