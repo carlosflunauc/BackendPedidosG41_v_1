@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication';
 import { Credenciales } from './../models/credenciales.model';
 import { service } from '@loopback/core';
 import {
@@ -60,6 +61,7 @@ export class UsuarioController {
     }
   }
 
+  
   @post('/usuarios')
   @response(200, {
     description: 'Usuario model instance',
