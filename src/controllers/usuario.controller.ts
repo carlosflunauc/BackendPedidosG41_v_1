@@ -1,3 +1,4 @@
+import { Credenciales } from './../models/credenciales.model';
 import { AutenticacionService } from './../services';
 import { service } from '@loopback/core';
 import {
@@ -18,9 +19,11 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
 import {Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
+import { Llaves } from '../config/llaves';
 const fetch = require("node-fetch");
 
 export class UsuarioController {
@@ -30,6 +33,33 @@ export class UsuarioController {
     @service(AutenticacionService)
     public servicioAutenticacion: AutenticacionService
   ) {}
+
+  @post("/identificarUsuario",{
+    responses:{
+      '200':{
+        description: "Identificacion de Usuarios"
+      }
+    }
+  })
+
+  async identificarUsuario(
+    @requestBody() credenciales: Credenciales
+  ){
+    let p = await this.servicioAutenticacion.IdentificarUsuario(credenciales.usuario, credenciales.clave);
+    if(p){
+      let token = this.servicioAutenticacion.GenerarTokenJWT(p);
+      return{
+        datos: {
+          nombre: p.nombres,
+          correo: p.correo,
+          id: p.id
+        },
+        tk: token
+    } 
+    } else{
+      throw new HttpErrors[401]("Datos Invalidos");
+    }
+  }
 
   @post('/usuarios')
   @response(200, {
@@ -60,7 +90,7 @@ export class UsuarioController {
     let destino = usuario.correo;
     let asunto = 'Registro en la plataforma de Prueba';
     let contenido =`Hola ${usuario.nombres}, su nombre de usuario es: ${usuario.correo} y su contraseña es: ${clave}`;
-    fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+    fetch(`${Llaves.urlServicioNotificaciones}/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
     .then((data: any)=>{
       console.log(data);
     })
