@@ -25,6 +25,17 @@ actualizacion 16 de noviembre 2021
 
   npm i jsonwebtoken
 
+  Lb4 model
+    Crear un modelo credenciales // tipo model 
+      Usuario: string
+      clave: string
+
+  npm i @loopback/authentication
+  npm i @loopback/security
+
+  npm i parse-bearer-token
+
+
 # pedidios
 
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the

@@ -96,6 +96,9 @@ export class UsuarioController {
     console.log(data);
   })
   return p;
+
+  // Notificacion al usuario por mensaje de texto
+  
 }
 
   @get('/usuarios/count')
