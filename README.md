@@ -23,6 +23,20 @@ actualizacion 15 de noviembre 2021
   npm i crypto-js
   npm i password-generator
 
+  npm i node-fetch@2.6
+
+  npm i jsonwebtoken
+
+  Lb4 model
+    Crear un modelo credenciales // tipo model 
+      Usuario: string
+      clave: string
+
+  npm i @loopback/authentication
+  npm i @loopback/security
+
+  npm i parse-bearer-token
+
 # pedidios
 
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
