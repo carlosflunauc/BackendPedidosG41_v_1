@@ -49,6 +49,7 @@ export class ProductoController {
   ): Promise<Producto> {
     return this.productoRepository.create(producto);
   }
+  
   @authenticate.skip()
   @get('/productos/count')
   @response(200, {

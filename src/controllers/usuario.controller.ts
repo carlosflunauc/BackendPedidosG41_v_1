@@ -98,6 +98,8 @@ export class UsuarioController {
     console.log(data);
   })
   return p;
+
+  
 }
 
   @get('/usuarios/count')
