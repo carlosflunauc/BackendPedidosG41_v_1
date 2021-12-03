@@ -29,6 +29,7 @@ export class Producto extends Entity {
 
   @property({
     type: 'string',
+    required: false,
   })
   pedidoId?: string;
 
